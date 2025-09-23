@@ -2,7 +2,7 @@
 
 Este proyecto es una **versión responsive y mejorada** de la página del producto **Cable UTP AMP Categoría 6 Chaqueta CMR 23AWG – Ref. 6-1427200-4**, transformada a partir de un código base no responsive.
 
- **Demo online (GitHub Pages):** [https://AMarceloRojas.github.io/ds3-6-1427200-4-responsive/]([https://AMarceloRojas.github.io/ds3-6-1427200-4-responsive/](https://amarcelorojas.github.io/ds3-6-1427200-4-responsive/AMP%206-1427200-4.html))  
+ **Demo online (GitHub Pages):** [https://AMarceloRojas.github.io/ds3-6-1427200-4-responsive/](https://amarcelorojas.github.io/ds3-6-1427200-4-responsive/AMP%206-1427200-4.html)  
  **Repositorio con código:** [https://github.com/AMarceloRojas/ds3-6-1427200-4-responsive](https://github.com/AMarceloRojas/ds3-6-1427200-4-responsive)
 
 ---
