@@ -233,3 +233,31 @@ details .content{padding:14px 16px; color:#334155}
 .brand-item:hover .brand-logo {
   transform: scale(1.1);
 }
+/* Caja scrolleable y sin “salirse” */
+.brand-scroll{
+  height: calc(78vh - 44px); /* 44px aprox del título */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f8fafc;
+}
+
+/* Tarjetitas de marca */
+.brand-item{
+  display:flex; align-items:center; justify-content:center;
+  padding:8px; border:1px solid #e5e7eb; border-radius:12px;
+  background:#f9fafb; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.brand-item:hover{
+  transform: translateY(-2px) scale(1.03);
+  border-color:#3b82f6;
+  box-shadow:0 6px 16px rgba(59,130,246,.18);
+  background:linear-gradient(180deg,#fff,#f4f8ff);
+}
+.brand-logo{
+  max-height:40px; max-width:120px; object-fit:contain;
+}
+
+/* Respeta usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce){
+  .brand-item{ transition:none }
+}
