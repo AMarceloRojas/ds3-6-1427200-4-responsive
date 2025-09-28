@@ -143,3 +143,36 @@ function addDynamicStyles() {
     `;
     document.head.appendChild(style);
 }
+const $ = (s) => document.querySelector(s);
+const menu = $('#offcanvas');
+const search = $('#searchPanel');
+
+$('#btnMenu')?.addEventListener('click', () => menu.classList.remove('hidden'));
+$('#btnCloseMenu')?.addEventListener('click', () => menu.classList.add('hidden'));
+menu?.addEventListener('click', (e) => { if (e.target === menu) menu.classList.add('hidden'); });
+
+$('#btnSearch')?.addEventListener('click', () => {
+  search.classList.remove('hidden');
+  setTimeout(() => $('#searchInput')?.focus(), 50);
+});
+$('#btnCloseSearch')?.addEventListener('click', () => search.classList.add('hidden'));
+search?.addEventListener('click', (e) => { if (e.target === search) search.classList.add('hidden'); });
+
+// Buscar y redirigir al catálogo según palabra clave
+$('#searchInput')?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const q = e.target.value.trim().toLowerCase();
+
+    if (q.includes("cat 5e") || q.includes("5e")) {
+      window.location.href = "https://www.ds3comunicaciones.com/AMP/219590-4.html";
+    } else if (q.includes("cat 6a") || q.includes("6a")) {
+      window.location.href = "https://www.ds3comunicaciones.com/AMP/1859345-2.html";
+    } else if (q.includes("cat 6") || q.includes("6-1427200-4")) {
+      window.location.href = "https://www.ds3comunicaciones.com/AMP/6-1427200-4.html";
+    } else if (q.includes("cat 7") || q.includes("7a")) {
+      window.location.href = "https://www.ds3comunicaciones.com/AMP/9-1499102-1.html";
+    } else {
+      alert("No se encontró el producto. Prueba con Cat5e, Cat6, Cat6A o Cat7.");
+    }
+  }
+});

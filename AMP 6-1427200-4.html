@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Cable UTP AMP Categoría 6 CMR 23AWG 305m — Ref. 6-1427200-4. Cumple TIA/EIA-568 e ISO/IEC 11801.">
   <meta name="author" content="DS3 Comunicaciones" />
-  <!-- Tailwind CDN -->
+  
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- (opcional) tu CSS adicional -->
+  
   <link rel="stylesheet" href="./css/products.css">
-  <!-- Favicon -->
+  
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.png">
   <link rel="icon" type="image/png" sizes="48x48" href="./images/favicon.png">
   <link rel="shortcut icon" href="./images/Logo1.png" type="image/x-icon">
@@ -20,23 +20,116 @@
 </head>
 
 <body class="bg-gray-50 text-slate-800">
-  <!-- SUBMENU / NAV (mismo header que tu index, aquí reducido a AMP) -->
-  <nav class="bg-white border-b border-gray-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="flex items-center gap-3 py-2 overflow-x-auto">
-        <a href="https://www.ds3comunicaciones.com/AMP/index.html"
-           class="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-50">
-          <img src="./images/Logo1.png" class="h-10 w-10" alt="AMP">
-          <span class="text-sm font-medium text-gray-700">AMP</span>
-        </a>
-        <a href="https://www.ds3comunicaciones.com/AMP/cable_utp.html"
-           class="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-50">
-          <i class="fa-solid fa-network-wired text-gray-600"></i>
-          <span class="text-sm font-medium text-gray-700 whitespace-nowrap">Cables UTP</span>
-        </a>
+<nav class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Row principal -->
+    <div class="h-14 flex items-center justify-between gap-3">
+      <!-- Botón burger (abre menú lateral) -->
+      <button id="btnMenu" class="p-2 -ml-2 rounded hover:bg-gray-100 focus:outline-none focus:ring">
+        <i class="fa-solid fa-bars text-xl text-gray-700"></i>
+      </button>
+
+      <!-- Logos -->
+      <a href="https://www.ds3comunicaciones.com/AMP/index.html" class="flex items-center gap-4">
+        <img src="./images/cisco.png" alt="DS3" class="h-10 w-auto" />
+        <img src="./images/Logo1.png" alt="Cisco" class="h-10 w-auto" />
+      </a>
+
+  
+      <div class="flex items-center gap-2">
+        
+        <button id="btnSearch" class="p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring">
+          <i class="fa-solid fa-magnifying-glass text-xl text-gray-700"></i>
+        </button>
       </div>
     </div>
-  </nav>
+
+    
+    <div class="hidden md:flex items-center gap-8 py-2">
+      <a href="tel:+51996533223" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
+        <i class="fa-solid fa-phone text-lg"></i> 996533223
+      </a>
+      <a href="tel:+51994428965" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
+        <i class="fa-solid fa-phone text-lg"></i> 994428965
+      </a>
+      <a href="mailto:netperu100@hotmail.com" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
+        <i class="fa-solid fa-envelope text-lg"></i> netperu100@hotmail.com
+      </a>
+
+      <div class="ml-auto flex items-center gap-4">
+        <a href="https://www.ds3comunicaciones.com/AMP/index.html"
+           class="px-3 py-1.5 rounded hover:bg-gray-50 text-gray-700 font-medium">AMP</a>
+        <a href="https://www.ds3comunicaciones.com/AMP/cable_utp.html"
+           class="px-3 py-1.5 rounded hover:bg-gray-50 text-gray-700 font-medium">Cables UTP</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="offcanvas" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <aside class="absolute left-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl p-4 flex flex-col">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="./images/Logo1.png" class="h-8" alt="DS3">
+        <span class="text-sm font-semibold text-gray-700">Menú</span>
+      </div>
+      <button id="btnCloseMenu" class="p-2 rounded hover:bg-gray-100">
+        <i class="fa-solid fa-xmark text-xl text-gray-700"></i>
+      </button>
+    </div>
+
+    <nav class="mt-4 space-y-1">
+      <a href="https://www.ds3comunicaciones.com/AMP/index.html" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100">
+        <img src="./images/Logo1.png" class="h-6 w-6" alt="AMP">
+        <span class="text-gray-800 font-medium">AMP</span>
+      </a>
+      <a href="https://www.ds3comunicaciones.com/AMP/cable_utp.html" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100">
+        <i class="fa-solid fa-network-wired text-gray-600"></i>
+        <span class="text-gray-800 font-medium">Cables UTP</span>
+      </a>
+    </nav>
+
+    <div class="mt-6 border-t pt-4 space-y-2">
+      <a href="tel:+51996533223" class="flex items-center gap-2 text-gray-800">
+        <i class="fa-solid fa-phone"></i> 996533223
+      </a>
+      <a href="tel:+51994428965" class="flex items-center gap-2 text-gray-800">
+        <i class="fa-solid fa-phone"></i> 994428965
+      </a>
+      <a href="mailto:netperu100@hotmail.com" class="flex items-center gap-2 text-gray-800">
+        <i class="fa-solid fa-envelope"></i> netperu100@hotmail.com
+      </a>
+    </div>
+  </aside>
+</div>
+
+
+<div id="searchPanel" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="absolute left-1/2 -translate-x-1/2 top-10 w-[92vw] max-w-2xl">
+    <div class="bg-white rounded-xl shadow-lg border overflow-hidden">
+      <div class="flex items-center gap-3 px-4 py-3">
+        <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+        <input id="searchInput" type="search" placeholder="Buscar productos, modelos o categorías..."
+               class="flex-1 outline-none bg-transparent text-gray-800 placeholder-gray-400">
+        <button id="btnCloseSearch" class="p-2 rounded hover:bg-gray-100">
+          <i class="fa-solid fa-xmark text-lg text-gray-700"></i>
+        </button>
+      </div>
+      
+      <div class="px-4 pb-3 text-sm text-gray-600">
+        <div class="flex flex-wrap gap-2">
+          <a href="https://www.ds3comunicaciones.com/AMP/6-1427200-4.html" class="px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">cat 6</a>
+          <a href="https://www.ds3comunicaciones.com/AMP/cable_utp.html#cat6a" class="px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">cat 6A</a>
+          <a href="https://www.ds3comunicaciones.com/AMP/9-1499102-1.html" class="px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">cat 7</a>
+          <a href="https://www.ds3comunicaciones.com/AMP/219590-4.html" class="px-2 py-1 bg-gray-100 rounded hover:bg-gray-200">cat 5e</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <main>
     <!-- BREADCRUMB -->
@@ -356,28 +449,138 @@
 
     <!-- SIMILARES (opcional, puedes mostrar otros cables AMP) -->
     <section class="py-10 bg-gray-100">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold text-white bg-[#049FD9] py-4 px-6 rounded-lg shadow-md inline-block">
-          También disponible — Cables AMP
-        </h2>
-        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Tarjetas ejemplo (cambia enlaces/imagenes) -->
-          <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
-            <div class="p-5">
-              <div class="h-40 flex items-center justify-center">
-                <img src="images/Cat6 LSZH.png" alt="AMP Cat6 LSZH" class="max-h-full object-contain group-hover:scale-105 transition">
-              </div>
-              <div class="pt-4 text-center">
-                <h3 class="font-bold">Cat6 LSZH</h3>
-                <p class="text-sm text-gray-600 mt-1">Chaqueta LSZH, 23 AWG, 305 m</p>
-                <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
-              </div>
-            </div>
-          </a>
-          
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-white bg-[#049FD9] py-4 px-6 rounded-lg shadow-md inline-block">
+      También disponible — Cables AMP
+    </h2>
+
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Cat 5e -->
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cable UTP Cat 5E AMP.png" alt="Cable UTP Cat 5E AMP" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat5e</h3>
+            <p class="text-sm text-gray-600 mt-1">AMP Categoría 5E – Modelo 219590-4</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
         </div>
-      </div>
-    </section>
+      </a>
+
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cable UTP Cat 5e LSZH AMP.png" alt="Cable UTP Cat 5e LSZH AMP" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat5e LSZH</h3>
+            <p class="text-sm text-gray-600 mt-1">Cable sólido 24 AWG, modelo 57538-2</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Cat 6 -->
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cable UTP Cat 6 AMP CMR.png" alt="Cable UTP Cat 6 AMP CMR" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat6 CMR</h3>
+            <p class="text-sm text-gray-600 mt-1">AMP Categoría 6, Modelo 6-1427200-4</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cable UTP Cat 6 AMP CM.png" alt="Cable UTP Cat 6 AMP CM" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat6 CM</h3>
+            <p class="text-sm text-gray-600 mt-1">AMP Categoría 6, Modelo 1427254-4</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cat6 LSZH.png" alt="Cable UTP Cat 6 AMP LSZH" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat6 LSZH</h3>
+            <p class="text-sm text-gray-600 mt-1">Chaqueta LSZH, 23 AWG, 305 m</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Cat 6A -->
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cat6A Apantallado.png" alt="Cable UTP Cat 6A AMP Apantallado" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat6A Apantallado</h3>
+            <p class="text-sm text-gray-600 mt-1">Chaqueta LSZH, Modelo 1859218-2</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cable UTP Cat 6A AMP LSZH.png" alt="Cable UTP Cat 6A AMP LSZH" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat6A LSZH</h3>
+            <p class="text-sm text-gray-600 mt-1">AMP Categoría 6A, Modelo 1859381-2</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Cat 7 -->
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cable UTP Cat 7 AMP LSZH.png" alt="Cable UTP Cat 7 AMP LSZH" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat7 LSZH</h3>
+            <p class="text-sm text-gray-600 mt-1">Categoría 7A, Modelo 9-1499102-1</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="group bg-white rounded-xl shadow border hover:shadow-lg transition">
+        <div class="p-5">
+          <div class="h-40 flex items-center justify-center">
+            <img src="images/Cable UTP Cat 7 F-FTP AMP.png" alt="Cable UTP Cat 7 F/FTP AMP" class="max-h-full object-contain group-hover:scale-105 transition">
+          </div>
+          <div class="pt-4 text-center">
+            <h3 class="font-bold">Cat7 F/FTP</h3>
+            <p class="text-sm text-gray-600 mt-1">Apantallado, 23 AWG, Modelo 1711163-1</p>
+            <div class="mt-3 text-blue-600 font-semibold">Ver producto</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
   </main>
 
   <!-- (igual al index) -->
@@ -437,5 +640,6 @@
       </div>
     </div>
   </footer>
+  <script src="./js/nav.js"></script>
 </body>
 </html>
