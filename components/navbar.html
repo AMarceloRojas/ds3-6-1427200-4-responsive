@@ -1,0 +1,117 @@
+<!-- NAV DS3 (mobile-first) -->
+<nav class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- Fila 1: header compacto (siempre visible) -->
+    <div class="h-14 flex items-center justify-between gap-3">
+      <!-- Logos -->
+      <a href="https://www.ds3comunicaciones.com/AMP/index.html" class="flex items-center gap-3">
+        <img src="./images/cisco.png" alt="Cisco" class="h-8 w-auto">
+        <img src="./images/Logo1.png" alt="DS3" class="h-8 w-auto">
+      </a>
+
+      <!-- Botón búsqueda (solo icono en móvil) -->
+      <button id="btnSearch" type="button"
+        class="p-2 rounded hover:bg-gray-100" aria-label="Buscar">
+  <i class="fa-solid fa-magnifying-glass text-xl text-gray-700"></i>
+</button>
+    </div>
+
+    <!-- Fila 2: contactos (solo >= md) -->
+    <div class="hidden md:flex items-center gap-6 pb-2">
+      <a href="tel:+51996533223" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
+        <i class="fa-solid fa-phone text-base"></i> 996533223
+      </a>
+      <a href="tel:+51994428965" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
+        <i class="fa-solid fa-phone text-base"></i> 994428965
+      </a>
+      <a href="mailto:netperu100@hotmail.com" class="flex items-center gap-2 text-gray-800 hover:text-[#049FD9]">
+        <i class="fa-solid fa-envelope text-base"></i> netperu100@hotmail.com
+      </a>
+
+      <div class="ml-auto hidden lg:flex items-center gap-4">
+        <a href="https://www.ds3comunicaciones.com/AMP/index.html"
+           class="px-3 py-1.5 rounded hover:bg-gray-50 text-gray-700 font-medium">AMP</a>
+        <a href="https://www.ds3comunicaciones.com/AMP/cable_utp.html"
+           class="px-3 py-1.5 rounded hover:bg-gray-50 text-gray-700 font-medium">Cables UTP</a>
+      </div>
+    </div>
+
+    <!-- Fila 3: carrusel de categorías (tu código original, con pequeñas clases) -->
+    <div class="relative">
+      <div class="nav-container flex justify-evenly overflow-x-auto md:py-2 px-1 md:px-4 space-x-2 scrollbar-hide">
+        <!-- Item 1 -->
+        <a href="https://www.ds3comunicaciones.com/cisco/catalys_9200l.html"
+           class="nav-item flex items-center p-1.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 hover:bg-gray-50">
+          <div class="icon-container h-6 w-6 flex items-center justify-center">
+            <img src="./icons/Switch Catalyst.ico" class="nav-icon max-h-full max-w-full" alt="Switch Catalyst" />
+          </div>
+          <span class="text-xs font-medium text-gray-600 whitespace-nowrap">Switch Catalyst</span>
+        </a>
+
+        <!-- Item 2 -->
+        <a href="https://www.ds3comunicaciones.com/cisco/bussines_sg350.html"
+           class="nav-item flex items-center p-1.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 hover:bg-gray-50">
+          <div class="icon-container h-6 w-6 flex items-center justify-center">
+            <img src="./icons/Cisco Business.ico" class="nav-icon max-h-full max-w-full" alt="Cisco Business" />
+          </div>
+          <span class="text-xs font-medium text-gray-600 whitespace-nowrap">Cisco Business</span>
+        </a>
+
+        <!-- Item 3 -->
+        <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_switch_industrial_b.html"
+           class="nav-item flex items-center p-1.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 hover:bg-gray-50">
+          <div class="icon-container h-6 w-6 flex items-center justify-center">
+            <img src="./icons/Switch Industrial.ico" class="nav-icon max-h-full max-w-full" alt="Switch Industrial" />
+          </div>
+          <span class="text-xs font-medium text-gray-600 whitespace-nowrap">Switch Industrial</span>
+        </a>
+
+        <!-- Item 4 -->
+        <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_access_point_b.html"
+           class="nav-item flex items-center p-1.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 hover:bg-gray-50">
+          <div class="icon-container h-6 w-6 flex items-center justify-center">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M21 42C32.598 42 42 32.598 42 21C42 9.40202 32.598 0 21 0C9.40202 0 0 9.40202 0 21C0 32.598 9.40202 42 21 42Z"
+                    fill="white" stroke="black" stroke-width="2" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M27 21C27 24.3137 24.3137 27 21 27C17.6863 27 15 24.3137 15 21C15 17.6863 17.6863 15 21 15C24.3137 15 27 17.6863 27 21Z"
+                    fill="black" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M29 21C29 25.4183 25.4183 29 21 29C16.5817 29 13 25.4183 13 21C13 16.5817 16.5817 13 21 13C25.4183 13 29 16.5817 29 21Z"
+                    fill="white" stroke="black" stroke-width="2" />
+            </svg>
+          </div>
+          <span class="text-xs font-medium text-gray-600 whitespace-nowrap">Aironet</span>
+        </a>
+
+        <!-- Item 5 -->
+        <a href="https://www.ds3comunicaciones.com/cisco/precios_cisco_telefonos_b.html"
+           class="nav-item flex items-center p-1.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 hover:bg-gray-50">
+          <div class="icon-container h-6 w-6 flex items-center justify-center">
+            <img src="./icons/Télefono.ico" class="nav-icon max-h-full max-w-full" alt="Teléfono" />
+          </div>
+          <span class="text-xs font-medium text-gray-600 whitespace-nowrap">Teléfono</span>
+        </a>
+
+        <!-- Item 6 -->
+        <a href="https://ds3comunicaciones.com/cisco/precios_cisco_meraki_b.html"
+           class="nav-item flex items-center p-1.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 hover:bg-gray-50">
+          <div class="icon-container h-6 w-6 flex items-center justify-center">
+            <img src="./icons/mariakii.ico" class="nav-icon max-h-full max-w-full" alt="Meraki" />
+          </div>
+          <span class="text-xs font-medium text-gray-600 whitespace-nowrap">Meraki</span>
+        </a>
+
+        <!-- Item 7 -->
+        <a href="#"
+           class="nav-item flex items-center p-1.5 rounded-lg min-w-fit flex-shrink-0 space-x-1.5 hover:bg-gray-50">
+          <div class="icon-container h-6 w-6 flex items-center justify-center">
+            <img src="./icons/Transceiver.ico" class="nav-icon max-h-full max-w-full" alt="Transceiver" />
+          </div>
+          <span class="text-xs font-medium text-gray-600 whitespace-nowrap">Transceiver</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

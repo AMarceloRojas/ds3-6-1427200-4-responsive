@@ -1,178 +1,98 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Cargar el navbar
-    fetch('./components/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.body.insertAdjacentHTML('afterbegin', data);
-            initializeNavbar();
-            initializeMobileMenu();
-            initializeSearchModal();
-            addDynamicStyles();
-        })
-        .catch(error => console.error('Error loading navbar:', error));
+document.addEventListener('DOMContentLoaded', () => {
+  // Inserta el navbar y luego ata todos los eventos
+  fetch('./components/navbar.html')
+    .then(r => r.text())
+    .then(html => {
+      document.body.insertAdjacentHTML('afterbegin', html);
+      setupNavbar();
+    })
+    .catch(err => console.error('Error loading navbar:', err));
 });
 
-function initializeNavbar() {
-    // Menú hamburguesa (versión simplificada que será reemplazada por initializeMobileMenu)
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    if (mobileMenuButton) {
-        const icon = mobileMenuButton.querySelector('i');
-        mobileMenuButton.addEventListener('click', function() {
-            if (icon) {
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            }
-        });
-    }
-}
+function setupNavbar() {
+  const $  = (s, root = document) => root.querySelector(s);
+  const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
 
-function initializeMobileMenu() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const closeMenuButton = document.getElementById('close-menu');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuOverlay = document.getElementById('menu-overlay');
+  /* ---------------- MENU LATERAL (offcanvas) ---------------- */
+  const offcanvas   = $('#offcanvas');
+  const openMenu    = $$('#btnMenu');        // admite 1..n botones
+  const closeMenu   = $$('#btnCloseMenu');   // admite 1..n botones
 
-    if (!mobileMenuButton || !mobileMenu) return;
-
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.remove('-translate-x-full');
-        mobileMenu.classList.remove('hidden');
-        if (menuOverlay) menuOverlay.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        
-        // Cambiar ícono
-        const icon = mobileMenuButton.querySelector('i');
-        if (icon) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        }
-    });
-
-    if (closeMenuButton) {
-        closeMenuButton.addEventListener('click', closeMobileMenu);
-    }
-
-    if (menuOverlay) {
-        menuOverlay.addEventListener('click', closeMobileMenu);
-    }
-
-    function closeMobileMenu() {
-        mobileMenu.classList.add('-translate-x-full');
-        if (menuOverlay) menuOverlay.classList.add('hidden');
-        document.body.style.overflow = '';
-        
-        // Cambiar ícono
-        const icon = mobileMenuButton.querySelector('i');
-        if (icon) {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    }
-}
-
-function initializeSearchModal() {
-    const searchModal = document.getElementById('search-modal');
-    const searchButton = document.getElementById('search-button');
-    const mobileSearchButton = document.getElementById('mobile-search-button');
-    const closeSearch = document.getElementById('close-search');
-
-    function openSearchModal() {
-        if (searchModal) {
-            searchModal.classList.remove('none');
-            searchModal.classList.add('anim');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    function closeSearchModal() {
-        if (searchModal) {
-            searchModal.classList.add('none');
-            document.body.style.overflow = '';
-        }
-    }
-
-    if (searchButton) searchButton.addEventListener('click', openSearchModal);
-    if (mobileSearchButton) mobileSearchButton.addEventListener('click', openSearchModal);
-    if (closeSearch) closeSearch.addEventListener('click', closeSearchModal);
-
-    if (searchModal) {
-        searchModal.addEventListener('click', function(e) {
-            if (e.target === searchModal) {
-                closeSearchModal();
-            }
-        });
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && searchModal && !searchModal.classList.contains('none')) {
-            closeSearchModal();
-        }
-    });
-}
-
-function addDynamicStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-        
-        .anim {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .none {
-            display: none;
-        }
-        
-        /* Estilos para el menú móvil */
-        .-translate-x-full {
-            transform: translateX(-100%);
-        }
-        
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        #menu-overlay {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-    `;
-    document.head.appendChild(style);
-}
-const $ = (s) => document.querySelector(s);
-const menu = $('#offcanvas');
-const search = $('#searchPanel');
-
-$('#btnMenu')?.addEventListener('click', () => menu.classList.remove('hidden'));
-$('#btnCloseMenu')?.addEventListener('click', () => menu.classList.add('hidden'));
-menu?.addEventListener('click', (e) => { if (e.target === menu) menu.classList.add('hidden'); });
-
-$('#btnSearch')?.addEventListener('click', () => {
-  search.classList.remove('hidden');
-  setTimeout(() => $('#searchInput')?.focus(), 50);
-});
-$('#btnCloseSearch')?.addEventListener('click', () => search.classList.add('hidden'));
-search?.addEventListener('click', (e) => { if (e.target === search) search.classList.add('hidden'); });
-
-// Buscar y redirigir al catálogo según palabra clave
-$('#searchInput')?.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const q = e.target.value.trim().toLowerCase();
-
-    if (q.includes("cat 5e") || q.includes("5e")) {
-      window.location.href = "https://www.ds3comunicaciones.com/AMP/219590-4.html";
-    } else if (q.includes("cat 6a") || q.includes("6a")) {
-      window.location.href = "https://www.ds3comunicaciones.com/AMP/1859345-2.html";
-    } else if (q.includes("cat 6") || q.includes("6-1427200-4")) {
-      window.location.href = "https://www.ds3comunicaciones.com/AMP/6-1427200-4.html";
-    } else if (q.includes("cat 7") || q.includes("7a")) {
-      window.location.href = "https://www.ds3comunicaciones.com/AMP/9-1499102-1.html";
-    } else {
-      alert("No se encontró el producto. Prueba con Cat5e, Cat6, Cat6A o Cat7.");
-    }
+  function openOffcanvas(e) {
+    if (e) e.preventDefault();
+    if (!offcanvas) return;
+    offcanvas.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
   }
-});
+  function closeOffcanvas() {
+    if (!offcanvas) return;
+    offcanvas.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  openMenu.forEach(b => b.addEventListener('click', openOffcanvas));
+  closeMenu.forEach(b => b.addEventListener('click', closeOffcanvas));
+  offcanvas?.addEventListener('click', (e) => {
+    // clic en el velo oscuro (fuera del aside)
+    if (e.target === offcanvas) closeOffcanvas();
+  });
+
+  /* ---------------- BUSCADOR (searchPanel) ---------------- */
+  const searchPanel   = $('#searchPanel');
+  const searchInput   = $('#searchInput');
+  const openSearch    = $$('#btnSearch');
+  const closeSearch   = $$('#btnCloseSearch');
+
+  function showSearch(e) {
+    if (e) e.preventDefault(); // evita que un <a> navegue
+    if (!searchPanel) return;
+    searchPanel.classList.remove('hidden');
+    setTimeout(() => searchInput?.focus(), 50);
+  }
+  function hideSearch() {
+    if (!searchPanel) return;
+    searchPanel.classList.add('hidden');
+  }
+
+  openSearch.forEach(b => b.addEventListener('click', showSearch));
+  closeSearch.forEach(b => b.addEventListener('click', hideSearch));
+  searchPanel?.addEventListener('click', (e) => {
+    if (e.target === searchPanel) hideSearch(); // clic fuera de la tarjeta
+  });
+
+  // Cerrar con ESC ambos paneles
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { hideSearch(); closeOffcanvas(); }
+  });
+
+  /* ---------------- LÓGICA DE BÚSQUEDA ---------------- */
+  if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const q = e.target.value.trim().toLowerCase();
+
+      // Mapa de rutas por patrón (añade más si quieres)
+      const routes = [
+        [/(^|\s)(cat\s*5e|5e|219590-4)(\s|$)/, "https://www.ds3comunicaciones.com/AMP/219590-4.html"],
+        [/(^|\s)(cat\s*6a|6a|1859345-2)(\s|$)/, "https://www.ds3comunicaciones.com/AMP/1859345-2.html"],
+        [/(^|\s)(cat\s*6|6-1427200-4|1427200)(\s|$)/, "https://www.ds3comunicaciones.com/AMP/6-1427200-4.html"],
+        [/(^|\s)(cat\s*7|7a|9-1499102-1)(\s|$)/, "https://www.ds3comunicaciones.com/AMP/9-1499102-1.html"]
+      ];
+
+      for (const [pattern, url] of routes) {
+        if (pattern.test(q)) {
+          window.location.href = url;
+          return;
+        }
+      }
+      alert("No se encontró el producto. Prueba: Cat5e, Cat6, Cat6A o Cat7.");
+    });
+  }
+
+  /* ---------------- Estilos utilitarios (opcional) ---------------- */
+  const style = document.createElement('style');
+  style.textContent =
+    `.scrollbar-hide::-webkit-scrollbar{display:none}
+     .scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}`;
+  document.head.appendChild(style);
+}
